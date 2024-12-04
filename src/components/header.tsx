@@ -24,16 +24,14 @@ export default function Header() {
           <Link href="/walks">Walks</Link>
         </Button>
       </div>
-      <div>
-        <Switch
-          suppressHydrationWarning
-          className="self"
-          checked={resolvedTheme === "dark"}
-          onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
-          uncheckedIcon={<MoonIcon />}
-          checkedIcon={<SunIcon />}
-        ></Switch>
-      </div>
+      <Switch
+        suppressHydrationWarning
+        className="self"
+        checked={resolvedTheme === "dark"}
+        onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
+        uncheckedIcon={<MoonIcon />}
+        checkedIcon={<SunIcon />}
+      />
     </nav>
   );
 }
