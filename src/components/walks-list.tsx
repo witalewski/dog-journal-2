@@ -2,10 +2,13 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { walks } from "@/data/walks";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 export default function WalksList() {
   return (
@@ -25,6 +28,11 @@ export default function WalksList() {
             <p>{walk.behavior}</p>
             <p>{walk.notes}</p>
           </CardContent>
+          <CardFooter>
+            <Button asChild variant="outline">
+              <Link href={`/walks/${walk.id}`}>View Details</Link>
+            </Button>
+          </CardFooter>
         </Card>
       ))}
     </div>

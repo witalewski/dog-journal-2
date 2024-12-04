@@ -8,6 +8,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { walks } from "@/data/walks";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 export default function WalksTable() {
   return (
@@ -23,6 +25,7 @@ export default function WalksTable() {
           <TableHead>Weather</TableHead>
           <TableHead>Behavior</TableHead>
           <TableHead>Notes</TableHead>
+          <TableHead></TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -36,6 +39,11 @@ export default function WalksTable() {
             <TableCell>{walk.weather}</TableCell>
             <TableCell>{walk.behavior}</TableCell>
             <TableCell>{walk.notes}</TableCell>
+            <TableCell>
+              <Button asChild variant="outline">
+                <Link href={`/walks/${walk.id}`}>View Details</Link>
+              </Button>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>
