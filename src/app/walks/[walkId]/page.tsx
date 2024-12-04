@@ -11,7 +11,7 @@ export default async function WalkPage({
   const walk = walks.find((walk) => walk.id === parsedWalkId);
 
   if (!walk) {
-    return <div>Walk not found.</div>;
+    return <div className="px-4 py-4">Walk not found.</div>;
   }
 
   return (
