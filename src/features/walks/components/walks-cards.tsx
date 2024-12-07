@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -6,17 +7,20 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { walks } from "@/data/walks";
-import { Button } from "./ui/button";
 import Link from "next/link";
+import type getWalks from "../queries/get-walks";
 
-export default function WalksList() {
+export default function WalksCards({
+  walks,
+}: {
+  walks: Awaited<ReturnType<typeof getWalks>>;
+}) {
   return (
     <div className="flex flex-col gap-2">
       {walks.map((walk) => (
         <Card key={walk.id}>
           <CardHeader>
-            <CardTitle>{walk.date}</CardTitle>
+            <CardTitle>{walk.date.toISOString()}</CardTitle>
             <CardDescription>
               {walk.city} - {walk.location}
             </CardDescription>

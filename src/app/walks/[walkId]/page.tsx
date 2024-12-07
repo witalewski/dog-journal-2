@@ -1,4 +1,4 @@
-import { walks } from "@/data/walks";
+import getWalk from "@/features/walks/queries/get-walk";
 
 export default async function WalkPage({
   params,
@@ -8,7 +8,7 @@ export default async function WalkPage({
   const { walkId } = await params;
   const parsedWalkId = parseInt(walkId, 10);
 
-  const walk = walks.find((walk) => walk.id === parsedWalkId);
+  const walk = await getWalk(parsedWalkId);
 
   if (!walk) {
     return <div className="px-4 py-4">Walk not found.</div>;

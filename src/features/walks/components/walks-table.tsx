@@ -7,11 +7,15 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { walks } from "@/data/walks";
-import { Button } from "./ui/button";
 import Link from "next/link";
+import { Button } from "../../../components/ui/button";
+import type getWalks from "../queries/get-walks";
 
-export default function WalksTable() {
+export default function WalksTable({
+  walks,
+}: {
+  walks: Awaited<ReturnType<typeof getWalks>>;
+}) {
   return (
     <Table>
       <TableCaption>Recent walks.</TableCaption>
@@ -33,7 +37,7 @@ export default function WalksTable() {
           <TableRow key={walk.id}>
             <TableCell>{walk.city}</TableCell>
             <TableCell>{walk.person}</TableCell>
-            <TableCell>{walk.date}</TableCell>
+            <TableCell>{walk.date.toISOString()}</TableCell>
             <TableCell>{walk.lengthMinutes}</TableCell>
             <TableCell>{walk.location}</TableCell>
             <TableCell>{walk.weather}</TableCell>
