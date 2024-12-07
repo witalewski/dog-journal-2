@@ -7,6 +7,5 @@ export default async function WalkPage({
 }) {
   const { walkId } = await params;
   const parsedWalkId = parseInt(walkId, 10);
-  // @ts-expect-error Server Component
   return <WalkDetails walkId={parsedWalkId} />;
 }
