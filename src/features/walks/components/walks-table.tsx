@@ -21,6 +21,7 @@ export default function WalksTable({
       <TableCaption>Recent walks.</TableCaption>
       <TableHeader>
         <TableRow>
+          <TableHead></TableHead>
           <TableHead>City</TableHead>
           <TableHead>Person</TableHead>
           <TableHead>Date</TableHead>
@@ -35,6 +36,9 @@ export default function WalksTable({
       <TableBody>
         {walks.map((walk) => (
           <TableRow key={walk.id}>
+            <TableCell>
+              <RatingDot rating={walk.rating} />
+            </TableCell>
             <TableCell>{walk.city}</TableCell>
             <TableCell>{walk.person}</TableCell>
             <TableCell>{walk.date.toISOString()}</TableCell>
@@ -53,4 +57,17 @@ export default function WalksTable({
       </TableBody>
     </Table>
   );
+}
+
+function RatingDot({ rating }: { rating: string }) {
+  switch (rating) {
+    case "green":
+      return <span style={{ color: "green" }}>🟢</span>;
+    case "yellow":
+      return <span style={{ color: "yellow" }}>🟡</span>;
+    case "red":
+      return <span style={{ color: "red" }}>🔴</span>;
+    default:
+      return <span style={{ color: "gray" }}>⚪️</span>;
+  }
 }
