@@ -11,8 +11,8 @@ function getIcon({
   uncheckedIcon,
   checked,
 }: {
-  checkedIcon?: React.ReactElement;
-  uncheckedIcon?: React.ReactElement;
+  checkedIcon?: React.ReactElement<HTMLElement>;
+  uncheckedIcon?: React.ReactElement<HTMLElement>;
   checked?: boolean;
 }) {
   const icon = checked ? checkedIcon : uncheckedIcon;
@@ -29,8 +29,8 @@ function getIcon({
 const Switch = React.forwardRef<
   React.ElementRef<typeof SwitchPrimitives.Root>,
   React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root> & {
-    checkedIcon?: React.ReactElement;
-    uncheckedIcon?: React.ReactElement;
+    checkedIcon?: React.ReactElement<HTMLElement>;
+    uncheckedIcon?: React.ReactElement<HTMLElement>;
   }
 >(({ className, ...props }, ref) => {
   return (
