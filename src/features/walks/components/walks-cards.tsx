@@ -20,7 +20,10 @@ export default function WalksCards({
       {walks.map((walk) => (
         <Card key={walk.id}>
           <CardHeader>
-            <CardTitle>{walk.date.toISOString()}</CardTitle>
+            <CardTitle>
+              <RatingDot rating={walk.rating} />
+              {walk.date.toISOString()}
+            </CardTitle>
             <CardDescription>
               {walk.city} - {walk.location}
             </CardDescription>
@@ -41,4 +44,17 @@ export default function WalksCards({
       ))}
     </div>
   );
+}
+
+function RatingDot({ rating }: { rating: string }) {
+  switch (rating) {
+    case "green":
+      return <span style={{ color: "green" }}>🟢</span>;
+    case "yellow":
+      return <span style={{ color: "yellow" }}>🟡</span>;
+    case "red":
+      return <span style={{ color: "red" }}>🔴</span>;
+    default:
+      return <span style={{ color: "gray" }}>⚪️</span>;
+  }
 }
