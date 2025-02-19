@@ -23,7 +23,7 @@ export default function WalksCards({
           <CardHeader>
             <CardTitle>
               <RatingDot rating={walk.rating} />
-              {walk.date.toISOString()}
+              {walk.date.toLocaleString()}
             </CardTitle>
             <CardDescription>
               {walk.city} - {walk.location}

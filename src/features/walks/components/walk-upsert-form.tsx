@@ -9,6 +9,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import upsertWalk from "../actions/upsert-walk";
 import SubmitButton from "./form/submit-button";
+import { formatDate } from "date-fns";
 
 export default function WalkUpsertForm() {
   return (
@@ -16,11 +17,18 @@ export default function WalkUpsertForm() {
       action={upsertWalk.bind(null, undefined)}
       className="flex flex-col gap-2"
     >
-      <input
-        type="hidden"
-        name="date"
-        defaultValue={new Date().toISOString()}
-      />
+      <div className="flex gap-2">
+        <Input
+          type="date"
+          name="date"
+          defaultValue={formatDate(new Date(), "yyyy-MM-dd")}
+        />
+        <Input
+          type="time"
+          name="time"
+          defaultValue={formatDate(new Date(), "HH:mm")}
+        />
+      </div>
       <Select name="rating">
         <SelectTrigger>
           <SelectValue placeholder="Rating" />

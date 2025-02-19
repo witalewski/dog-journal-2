@@ -3,13 +3,24 @@
 import prisma from "@/lib/prisma";
 import { editWalkPath, walkPath, walksPath } from "@/paths";
 import { revalidatePath } from "next/cache";
+import { TZDate } from "@date-fns/tz";
 
 export default async function upsertWalk(
   walkId: number | undefined,
   formData: FormData
 ) {
+  const [year, month, day] = (formData.get("date") as string).split("-");
+  const [hours, minutes] = (formData.get("time") as string).split(":");
+  const date = new TZDate(
+    parseInt(year),
+    parseInt(month) - 1,
+    parseInt(day),
+    parseInt(hours),
+    parseInt(minutes)
+  );
+
   const data = {
-    date: new Date(formData.get("date") as string),
+    date: date.toISOString(),
     rating: formData.get("rating") as string,
     city: formData.get("city") as string,
     location: formData.get("location") as string,

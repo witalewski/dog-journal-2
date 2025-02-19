@@ -42,7 +42,7 @@ export default function WalksTable({
             </TableCell>
             <TableCell>{walk.city}</TableCell>
             <TableCell>{walk.person}</TableCell>
-            <TableCell>{walk.date.toISOString()}</TableCell>
+            <TableCell>{walk.date.toLocaleString()}</TableCell>
             <TableCell>{walk.lengthMinutes}</TableCell>
             <TableCell>{walk.location}</TableCell>
             <TableCell>{walk.weather}</TableCell>
