@@ -1,3 +1,12 @@
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import upsertWalk from "../actions/upsert-walk";
 import SubmitButton from "./form/submit-button";
 
@@ -12,22 +21,27 @@ export default function WalkUpsertForm() {
         name="date"
         defaultValue={new Date().toISOString()}
       />
-      <select name="rating">
-        <option value="green">Green</option>
-        <option value="yellow">Yellow</option>
-        <option value="red">Red</option>
-      </select>
-      <input type="text" name="city" placeholder="City" />
-      <input type="text" name="location" placeholder="Location" />
-      <input type="text" name="person" placeholder="Person" />
-      <input
+      <Select name="rating">
+        <SelectTrigger>
+          <SelectValue placeholder="Rating" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="green">Green</SelectItem>
+          <SelectItem value="yellow">Yellow</SelectItem>
+          <SelectItem value="red">Red</SelectItem>
+        </SelectContent>
+      </Select>
+      <Input type="text" name="city" placeholder="City" />
+      <Input type="text" name="location" placeholder="Location" />
+      <Input type="text" name="person" placeholder="Person" />
+      <Input
         type="number"
         name="lengthMinutes"
         placeholder="Length in minutes"
       />
-      <input type="text" name="weather" placeholder="Weather" />
-      <input type="text" name="behavior" placeholder="Behavior" />
-      <textarea name="notes" placeholder="Notes" />
+      <Input type="text" name="weather" placeholder="Weather" />
+      <Input type="text" name="behavior" placeholder="Behavior" />
+      <Textarea name="notes" placeholder="Notes" />
       <SubmitButton label="Add Walk" />
     </form>
   );
