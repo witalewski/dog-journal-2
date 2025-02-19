@@ -1,6 +1,8 @@
 "use server";
 
 import prisma from "@/lib/prisma";
+import { editWalkPath, walkPath, walksPath } from "@/paths";
+import { revalidatePath } from "next/cache";
 
 export default async function upsertWalk(
   walkId: number | undefined,
@@ -24,4 +26,11 @@ export default async function upsertWalk(
     update: data,
     create: data,
   });
+
+  revalidatePath(walksPath());
+
+  if (walkId) {
+    revalidatePath(walkPath(walkId));
+    revalidatePath(editWalkPath(walkId));
+  }
 }
