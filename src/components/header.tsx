@@ -1,11 +1,11 @@
 "use client";
 
+import { homePath, walksPath } from "@/paths";
+import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { Switch } from "./ui/switch";
-import { MoonIcon, SunIcon } from "lucide-react";
-import { homePath, walksPath } from "@/paths";
 
 export default function Header() {
   const { resolvedTheme, setTheme } = useTheme();
@@ -17,22 +17,24 @@ export default function Header() {
     >
       <div>
         <Button asChild variant="ghost">
-          <Link className="font-bold" href={homePath()}>
-            Dog Journal 🐕
+          <Link href={homePath()}>
+            <h1 className="text-lg font-semibold">Dog Journal 🐕</h1>
           </Link>
         </Button>
-        <Button asChild variant="ghost">
+      </div>
+      <div className="flex items-center gap-4">
+        <Switch
+          suppressHydrationWarning
+          className="self"
+          checked={resolvedTheme === "dark"}
+          onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
+          uncheckedIcon={<MoonIcon />}
+          checkedIcon={<SunIcon />}
+        />
+        <Button asChild variant="secondary">
           <Link href={walksPath()}>Walks</Link>
         </Button>
       </div>
-      <Switch
-        suppressHydrationWarning
-        className="self"
-        checked={resolvedTheme === "dark"}
-        onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
-        uncheckedIcon={<MoonIcon />}
-        checkedIcon={<SunIcon />}
-      />
     </nav>
   );
 }
