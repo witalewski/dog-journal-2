@@ -1,4 +1,6 @@
 import WalkDetails from "@/features/walks/components/walk-details";
+import getWalk from "@/features/walks/queries/get-walk";
+import { notFound } from "next/navigation";
 
 export default async function WalkPage({
   params,
@@ -7,5 +9,12 @@ export default async function WalkPage({
 }) {
   const { walkId } = await params;
   const parsedWalkId = parseInt(walkId, 10);
-  return <WalkDetails walkId={parsedWalkId} />;
+
+  const walk = await getWalk(parsedWalkId);
+
+  if (!walk) {
+    notFound();
+  }
+
+  return <WalkDetails walk={walk} />;
 }

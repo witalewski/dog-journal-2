@@ -1,5 +1,7 @@
 "use client";
 
+import Placeholder from "@/components/placeholder";
+
 export default function ErrorPage({
   error,
 }: {
@@ -8,9 +10,5 @@ export default function ErrorPage({
     stack: string;
   };
 }) {
-  return (
-    <div className="flex flex-1 items-center justify-center self-center">
-      {error.message ?? "Something went wrong"}
-    </div>
-  );
+  return <Placeholder label={error.message ?? "Something went wrong"} />;
 }
