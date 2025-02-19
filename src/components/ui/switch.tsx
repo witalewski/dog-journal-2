@@ -32,7 +32,7 @@ const Switch = React.forwardRef<
     checkedIcon?: React.ReactElement<HTMLElement>;
     uncheckedIcon?: React.ReactElement<HTMLElement>;
   }
->(({ className, ...props }, ref) => {
+>(({ className, checkedIcon, uncheckedIcon, ...props }, ref) => {
   return (
     <SwitchPrimitives.Root
       className={cn(
@@ -53,7 +53,7 @@ const Switch = React.forwardRef<
           "translate-x-[18px]": !props.checked,
         })}
       >
-        {getIcon(props)}
+        {getIcon({ checkedIcon, uncheckedIcon, checked: props.checked })}
       </div>
     </SwitchPrimitives.Root>
   );
