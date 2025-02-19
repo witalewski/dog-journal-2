@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 import type getWalks from "../queries/get-walks";
+import { walkPath } from "@/paths";
 
 export default function WalksCards({
   walks,
@@ -37,7 +38,7 @@ export default function WalksCards({
           </CardContent>
           <CardFooter>
             <Button asChild variant="outline">
-              <Link href={`/walks/${walk.id}`}>View Details</Link>
+              <Link href={walkPath(walk.id)}>View Details</Link>
             </Button>
           </CardFooter>
         </Card>

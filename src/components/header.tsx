@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { Switch } from "./ui/switch";
 import { MoonIcon, SunIcon } from "lucide-react";
+import { homePath, walksPath } from "@/paths";
 
 export default function Header() {
   const { resolvedTheme, setTheme } = useTheme();
@@ -16,12 +17,12 @@ export default function Header() {
     >
       <div>
         <Button asChild variant="ghost">
-          <Link className="font-bold" href="/">
+          <Link className="font-bold" href={homePath()}>
             Dog Journal 🐕
           </Link>
         </Button>
         <Button asChild variant="ghost">
-          <Link href="/walks">Walks</Link>
+          <Link href={walksPath()}>Walks</Link>
         </Button>
       </div>
       <Switch

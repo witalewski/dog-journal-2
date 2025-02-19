@@ -10,6 +10,7 @@ import {
 import Link from "next/link";
 import { Button } from "../../../components/ui/button";
 import type getWalks from "../queries/get-walks";
+import { walkPath } from "@/paths";
 
 export default function WalksTable({
   walks,
@@ -49,7 +50,7 @@ export default function WalksTable({
             <TableCell>{walk.notes}</TableCell>
             <TableCell>
               <Button asChild variant="outline">
-                <Link href={`/walks/${walk.id}`}>View Details</Link>
+                <Link href={walkPath(walk.id)}>View Details</Link>
               </Button>
             </TableCell>
           </TableRow>
