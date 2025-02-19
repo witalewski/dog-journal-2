@@ -6,6 +6,7 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import createWalk from "../actions/create-walk";
+import SubmitButton from "./form/submit-button";
 
 export default function AddWalk() {
   return (
@@ -36,8 +37,7 @@ export default function AddWalk() {
           <textarea name="notes" placeholder="Notes" />
         </CardContent>
         <CardFooter>
-          <Button>Add Walk</Button>
-          <button type="submit">Add Walk</button>
+          <SubmitButton label="Add Walk" />
         </CardFooter>
       </form>
     </Card>
