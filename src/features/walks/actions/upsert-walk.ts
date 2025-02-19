@@ -7,6 +7,7 @@ import { TZDate } from "@date-fns/tz";
 
 export default async function upsertWalk(
   walkId: number | undefined,
+  actionState: { message: string },
   formData: FormData
 ) {
   const [year, month, day] = (formData.get("date") as string).split("-");
@@ -44,4 +45,8 @@ export default async function upsertWalk(
     revalidatePath(walkPath(walkId));
     revalidatePath(editWalkPath(walkId));
   }
+
+  return {
+    message: "Walk saved!",
+  };
 }

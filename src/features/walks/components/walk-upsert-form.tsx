@@ -1,3 +1,5 @@
+"use client";
+
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -11,14 +13,20 @@ import upsertWalk from "../actions/upsert-walk";
 import SubmitButton from "./form/submit-button";
 import { formatDate } from "date-fns";
 import { Entry } from "@prisma/client";
+import { useActionState } from "react";
 
 export default function WalkUpsertForm({ walk }: { walk?: Entry }) {
   const defaultDate = walk ? new Date(walk.date) : new Date();
+
+  const [actionState, action] = useActionState(
+    upsertWalk.bind(null, walk?.id),
+    {
+      message: "",
+    }
+  );
+
   return (
-    <form
-      action={upsertWalk.bind(null, walk?.id)}
-      className="flex flex-col gap-2"
-    >
+    <form action={action} className="flex flex-col gap-2">
       <div className="flex gap-2">
         <Input
           type="date"
@@ -79,6 +87,7 @@ export default function WalkUpsertForm({ walk }: { walk?: Entry }) {
       />
       <Textarea name="notes" placeholder="Notes" defaultValue={walk?.notes} />
       <SubmitButton label={walk ? "Save Walk" : "Add Walk"} />
+      {actionState.message}
     </form>
   );
 }
