@@ -12,7 +12,7 @@ export default async function WalksList() {
       <CardCompact
         className="w-full max-w-[420px] self-center"
         title="Add Walk"
-        description="A new walk will be recorder"
+        description="A new walk will be recorded"
         content={<WalkUpsertForm />}
       />
       <div className="hidden lg:block">

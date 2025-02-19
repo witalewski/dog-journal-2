@@ -10,7 +10,7 @@ import {
 import Link from "next/link";
 import { Button } from "../../../components/ui/button";
 import type getWalks from "../queries/get-walks";
-import { walkPath } from "@/paths";
+import { editWalkPath, walkPath } from "@/paths";
 
 export default function WalksTable({
   walks,
@@ -31,7 +31,7 @@ export default function WalksTable({
           <TableHead>Weather</TableHead>
           <TableHead>Behavior</TableHead>
           <TableHead>Notes</TableHead>
-          <TableHead></TableHead>
+          <TableHead className="max-w-min flex-shrink"></TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -48,9 +48,12 @@ export default function WalksTable({
             <TableCell>{walk.weather}</TableCell>
             <TableCell>{walk.behavior}</TableCell>
             <TableCell>{walk.notes}</TableCell>
-            <TableCell>
+            <TableCell className="flex max-w-min flex-shrink gap-2">
               <Button asChild variant="outline">
                 <Link href={walkPath(walk.id)}>View Details</Link>
+              </Button>
+              <Button asChild variant="secondary">
+                <Link href={editWalkPath(walk.id)}>Edit</Link>
               </Button>
             </TableCell>
           </TableRow>
