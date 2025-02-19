@@ -54,6 +54,7 @@ export default function WalkUpsertForm({ walk }: { walk?: Entry }) {
         name="city"
         placeholder="City"
         defaultValue={walk?.city}
+        autoFocus
       />
       <Input
         type="text"
