@@ -20,7 +20,7 @@ export default async function EditWalkPage({
   return (
     <div className="flex flex-1 items-center justify-center">
       <CardCompact
-        className="w-full max-w-[420px] self-center"
+        className="w-full max-w-[560px] self-center"
         title="Edit Walk"
         description="You can make changes to the walk."
         content={<WalkUpsertForm walk={walk} />}

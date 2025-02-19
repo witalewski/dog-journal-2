@@ -27,7 +27,7 @@ export default function WalkUpsertForm({ walk }: { walk?: Entry }) {
 
   return (
     <form action={action} className="flex flex-col gap-2">
-      <div className="flex gap-2">
+      <div className="flex flex-col gap-2 lg:flex-row">
         <Input
           type="date"
           name="date"

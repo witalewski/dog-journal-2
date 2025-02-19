@@ -19,7 +19,7 @@ export default function WalksPage() {
         </div>
       </Heading>
       <CardCompact
-        className="w-full max-w-[420px] self-center lg:hidden"
+        className="w-full max-w-[560px] self-center lg:hidden"
         title="Add Walk"
         description="A new walk will be recorded"
         content={<WalkUpsertForm />}
