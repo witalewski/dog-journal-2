@@ -1,4 +1,10 @@
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
   Table,
   TableBody,
   TableCaption,
@@ -7,10 +13,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { editWalkPath, walkPath } from "@/paths";
 import Link from "next/link";
 import { Button } from "../../../components/ui/button";
 import type getWalks from "../queries/get-walks";
-import { editWalkPath, walkPath } from "@/paths";
 
 export default function WalksTable({
   walks,
@@ -49,12 +55,19 @@ export default function WalksTable({
             <TableCell>{walk.behavior}</TableCell>
             <TableCell>{walk.notes}</TableCell>
             <TableCell className="flex max-w-min flex-shrink gap-2">
-              <Button asChild variant="outline">
-                <Link href={walkPath(walk.id)}>View Details</Link>
-              </Button>
-              <Button asChild variant="secondary">
-                <Link href={editWalkPath(walk.id)}>Edit</Link>
-              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline">...</Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem asChild>
+                    <Link href={walkPath(walk.id)}>View Details</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href={editWalkPath(walk.id)}>Edit</Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </TableCell>
           </TableRow>
         ))}
