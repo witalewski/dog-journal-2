@@ -4,13 +4,13 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import createWalk from "../actions/create-walk";
+import upsertWalk from "../actions/upsert-walk";
 import SubmitButton from "./form/submit-button";
 
 export default function AddWalk() {
   return (
     <Card>
-      <form action={createWalk}>
+      <form action={upsertWalk.bind(null, undefined)}>
         <CardHeader>Add Walk</CardHeader>
         <CardContent className="flex flex-col gap-2">
           <input
