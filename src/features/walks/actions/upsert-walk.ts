@@ -2,14 +2,23 @@
 
 import prisma from "@/lib/prisma";
 import { editWalkPath, walkPath, walksPath } from "@/paths";
-import { revalidatePath } from "next/cache";
+import { createClient } from "@/utils/supabase/server";
 import { TZDate } from "@date-fns/tz";
+import { revalidatePath } from "next/cache";
 
 export default async function upsertWalk(
   walkId: number | undefined,
   actionState: { message: string },
   formData: FormData
 ) {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user || user.id !== "93b708b7-de35-41e7-9cf9-74b08c076b0c") {
+    throw new Error("Unauthorized");
+  }
+
   const [year, month, day] = (formData.get("date") as string).split("-");
   const [hours, minutes] = (formData.get("time") as string).split(":");
   const date = new TZDate(
