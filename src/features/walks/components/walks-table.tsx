@@ -98,16 +98,3 @@ export default function WalksTable({
     </Table>
   );
 }
-
-function RatingDot({ rating }: { rating: string }) {
-  switch (rating) {
-    case "green":
-      return <span style={{ color: "green" }}>🟢</span>;
-    case "yellow":
-      return <span style={{ color: "yellow" }}>🟡</span>;
-    case "red":
-      return <span style={{ color: "red" }}>🔴</span>;
-    default:
-      return <span style={{ color: "gray" }}>⚪️</span>;
-  }
-}
